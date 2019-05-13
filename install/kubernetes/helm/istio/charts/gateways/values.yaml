@@ -58,9 +58,10 @@ istio-ingressgateway:
     name: https
     nodePort: 31390
   # Example of a port to add. Remove if not needed
-  - port: 31400
-    name: tcp
-    nodePort: 31400
+  - port: 3000
+    targetPort: 3000
+    name: tcp-grafana
+    #nodePort: 31400
   ### PORTS FOR UI/metrics #####
   ## Disable if not needed
   - port: 15029
