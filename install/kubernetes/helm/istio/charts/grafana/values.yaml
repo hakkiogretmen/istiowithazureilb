@@ -23,10 +23,10 @@ persist: false
 storageClassName: ""
 accessMode: ReadWriteMany
 security:
-  enabled: false
+  enabled: true
   secretName: grafana
-  usernameKey: username
-  passphraseKey: passphrase
+  usernameKey: 
+  passphraseKey: 
 nodeSelector: {}
 
 # Specify the pod anti-affinity that allows you to constrain which nodes
@@ -52,9 +52,10 @@ podAntiAffinityTermLabelSelector: {}
 
 contextPath: /grafana
 service:
-  annotations: {}
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
   name: http
-  type: ClusterIP
+  type: LoadBalancer
   externalPort: 3000
   loadBalancerIP:
   loadBalancerSourceRanges:
